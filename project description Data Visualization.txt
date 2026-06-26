@@ -1,0 +1,116 @@
+# Data Visualization
+
+## Overview
+
+Data Visualization is an important stage in the Human Development Index (HDI) Prediction System because it helps transform raw numerical data into meaningful visual patterns that are easier to understand and interpret. In this phase, multiple visualization techniques were performed to analyze the relationship between HDI and important development indicators. Visual analysis supports decision-making by identifying trends, correlations, and hidden patterns within the dataset.
+
+Since visualizing the entire dataset at once may produce overcrowded graphs and reduce readability, the first 20 rows of the dataset (`data1`) were selected for plotting and exploration purposes. This allowed better observation of relationships between variables while maintaining clear and interpretable visual outputs.
+
+The primary goal of this stage was to identify which variables contribute most significantly to Human Development Index values and determine suitable input features for machine learning model development.
+
+---
+
+## Objectives
+
+The objectives of the Data Visualization phase are:
+
+* Understand the distribution of human development indicators.
+* Explore relationships between HDI and major input features.
+* Detect trends and patterns among countries.
+* Identify highly correlated variables.
+* Support feature selection for machine learning.
+* Improve understanding of dataset quality and structure.
+
+---
+
+## Visualization Tasks Performed
+
+### 1. Unique Country Value Analysis
+
+The `unique()` function was applied to the Country column to display all unique country names contained in the dataset.
+
+Purpose:
+
+* Verify that each country appears only once.
+* Confirm dataset consistency.
+* Detect duplicate country records.
+
+This analysis confirmed that the dataset contains distinct country entries and each row represents an individual country.
+
+---
+
+### 2. Mean Years of Schooling vs HDI
+
+A Strip Plot was created using Seaborn to visualize the relationship between Mean Years of Schooling and Human Development Index values.
+
+Visualization Components:
+
+* X-axis → Mean Years of Schooling
+* Y-axis → HDI Score
+* Plot Type → Strip Plot
+
+Purpose:
+
+* Examine how education affects HDI.
+* Identify whether higher educational attainment contributes to stronger human development.
+
+Observation:
+
+The visualization indicates that countries with higher average years of schooling generally achieve better HDI values. Education appears to be positively associated with development performance.
+
+---
+
+### 3. Life Expectancy vs HDI
+
+Another Strip Plot was developed to study the relationship between Life Expectancy and Human Development Index.
+
+Visualization Components:
+
+* X-axis → Life Expectancy
+* Y-axis → HDI Score
+* Plot Type → Strip Plot
+
+Purpose:
+
+* Analyze the impact of health conditions on HDI.
+* Observe whether longer life expectancy contributes to national development.
+
+Observation:
+
+The results suggest that countries with greater life expectancy tend to maintain higher HDI scores, indicating that healthcare and living conditions strongly influence development outcomes.
+
+---
+
+### 4. Correlation Heatmap
+
+A correlation heatmap was generated using Seaborn to measure relationships between selected numerical variables.
+
+Purpose:
+
+* Understand variable dependencies.
+* Identify highly influential predictors.
+* Assist feature selection for machine learning.
+
+Heatmap Interpretation:
+
+* Values close to +1 indicate strong positive correlation.
+* Values close to −1 indicate strong negative correlation.
+* Values close to 0 indicate weak or no relationship.
+
+Observation:
+
+The heatmap showed strong positive relationships between HDI and variables such as life expectancy, education, and gross national income per capita. These indicators were identified as important predictors for HDI estimation.
+
+---
+
+## Importance of Data Visualization
+
+Data visualization plays a critical role in exploratory data analysis because it converts complex datasets into understandable graphical representations. It allows users to quickly identify meaningful insights and supports accurate model-building decisions.
+
+This stage improves the quality of machine learning workflows by ensuring that only relevant and meaningful features are selected for prediction.
+
+---
+
+## Conclusion
+
+The Data Visualization stage successfully explored the relationships between Human Development Index and key socio-economic indicators. Through strip plots, country analysis, and correlation heatmaps, important development patterns were identified. The findings indicate that education, life expectancy, and economic factors have a strong influence on HDI values and should be considered as major features for predictive model training.
