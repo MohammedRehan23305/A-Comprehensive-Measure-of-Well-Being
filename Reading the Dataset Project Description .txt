@@ -1,0 +1,19 @@
+# Reading the Dataset – Description
+
+Reading the dataset is the first step in the Human Development Index (HDI) Prediction project. In this stage, the dataset is imported into Python and loaded into a Pandas DataFrame for analysis.
+
+The dataset is stored in CSV (Comma Separated Values) format and contains human development indicators for multiple countries. These indicators include information such as HDI score, life expectancy, education level, and income-related measurements.
+
+The Pandas library is used because it provides efficient tools for reading, organizing, and analyzing structured data.
+
+The `read_csv()` function loads the dataset into a DataFrame named `Development`.
+
+The `head()` method displays the first five rows of the dataset and helps verify that the dataset has been loaded correctly.
+
+This step provides an overview of the dataset structure and prepares the data for preprocessing, visualization, and machine learning tasks.
+
+### Output
+
+* Dataset successfully loaded.
+* First five records displayed.
+* Dataset ready for further analysis and model development.
