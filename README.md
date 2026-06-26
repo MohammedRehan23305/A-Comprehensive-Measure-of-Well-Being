@@ -1,2 +1,4 @@
-# A-Comprehensive-Measure-of-Well-Being
-The Human Development Index (HDI) is a statistical composite index of life expectancy, education, and per capita income indicators, which are used to rank countries into four tiers Very High, High, Medium, and Low of human development.
+# Understanding the Dataset
+Load the dataset into a Pandas DataFrame and inspect its structure. The dataset is provided in CSV format and contains various human development indicators for different countries.
+
+The head() method is used to display the first five rows of the dataset, providing a quick overview of the available features and their corresponding values. The dataset consists of 195 rows and 82 columns, where each row represents a country and each column represents a specific human development metric.
