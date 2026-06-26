@@ -1,0 +1,7 @@
+Project Description
+
+Objective:
+Load the Human Development Index (HDI) dataset into a Pandas DataFrame and inspect its structure.
+
+Result:
+The dataset was successfully loaded using pd.read_csv(). The head() method displayed the first five rows, allowing inspection of the available features. The dataset contains 195 rows and 82 columns, where each row represents a country and each column represents a human development indicator. Further analysis was performed using shape, columns, info(), and describe() to understand dataset dimensions and statistics.
