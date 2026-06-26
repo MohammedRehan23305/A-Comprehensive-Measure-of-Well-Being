@@ -1,2 +1,2 @@
-# A-Comprehensive-Measure-of-Well-Being
-The Human Development Index (HDI) is a statistical composite index of life expectancy, education, and per capita income indicators, which are used to rank countries into four tiers Very High, High, Medium, and Low of human development.
+# Entity Relationship diagram
+The ER diagram represents the core entities involved in the Loan Approval Prediction System and illustrates how they interact with each other. It provides a clear structure for organizing applicant information, loan requests, prediction results, and machine learning model outputs within the database.
