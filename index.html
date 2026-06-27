@@ -1,0 +1,362 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Human Development Index Predictor</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 700px;
+        }
+
+        .header {
+            text-align: center;
+            margin-bottom: 32px;
+        }
+
+        .header .badge {
+            display: inline-block;
+            background: rgba(255,255,255,0.1);
+            color: #7ecfff;
+            font-size: 12px;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            padding: 4px 14px;
+            border-radius: 20px;
+            margin-bottom: 14px;
+        }
+
+        .header h1 {
+            color: #ffffff;
+            font-size: 2rem;
+            font-weight: 700;
+            line-height: 1.2;
+        }
+
+        .header h1 span {
+            color: #7ecfff;
+        }
+
+        .header p {
+            color: rgba(255,255,255,0.55);
+            margin-top: 10px;
+            font-size: 0.95rem;
+        }
+
+        .card {
+            background: rgba(255, 255, 255, 0.06);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(255,255,255,0.12);
+            border-radius: 20px;
+            padding: 36px 40px;
+        }
+
+        .form-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+            margin-bottom: 20px;
+        }
+
+        .form-group {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+
+        .form-group.full-width {
+            grid-column: 1 / -1;
+        }
+
+        label {
+            color: rgba(255,255,255,0.75);
+            font-size: 0.82rem;
+            font-weight: 600;
+            letter-spacing: 0.5px;
+            text-transform: uppercase;
+        }
+
+        input[type="number"] {
+            background: rgba(255,255,255,0.08);
+            border: 1.5px solid rgba(255,255,255,0.15);
+            border-radius: 10px;
+            padding: 12px 16px;
+            color: #ffffff;
+            font-size: 0.95rem;
+            transition: border-color 0.2s, background 0.2s;
+            outline: none;
+            width: 100%;
+        }
+
+        input[type="number"]::placeholder {
+            color: rgba(255,255,255,0.3);
+        }
+
+        input[type="number"]:focus {
+            border-color: #7ecfff;
+            background: rgba(126,207,255,0.08);
+        }
+
+        .hint {
+            color: rgba(255,255,255,0.35);
+            font-size: 0.75rem;
+        }
+
+        .btn-predict {
+            width: 100%;
+            padding: 14px;
+            background: linear-gradient(135deg, #7ecfff, #3a9fd5);
+            border: none;
+            border-radius: 12px;
+            color: #0f2027;
+            font-size: 1rem;
+            font-weight: 700;
+            letter-spacing: 0.5px;
+            cursor: pointer;
+            transition: opacity 0.2s, transform 0.1s;
+            margin-top: 8px;
+        }
+
+        .btn-predict:hover { opacity: 0.9; transform: translateY(-1px); }
+        .btn-predict:active { transform: translateY(0); }
+
+        /* Result */
+        .result-card {
+            margin-top: 24px;
+            background: rgba(255,255,255,0.06);
+            border: 1px solid rgba(255,255,255,0.12);
+            border-radius: 16px;
+            padding: 28px 32px;
+            text-align: center;
+        }
+
+        .result-label {
+            color: rgba(255,255,255,0.5);
+            font-size: 0.8rem;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            margin-bottom: 10px;
+        }
+
+        .hdi-value {
+            font-size: 4rem;
+            font-weight: 800;
+            color: #7ecfff;
+            line-height: 1;
+            margin-bottom: 10px;
+        }
+
+        .category-badge {
+            display: inline-block;
+            padding: 6px 18px;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            margin-bottom: 20px;
+            color: #fff;
+        }
+
+        .hdi-bar-wrapper {
+            position: relative;
+            height: 10px;
+            background: rgba(255,255,255,0.1);
+            border-radius: 5px;
+            overflow: hidden;
+        }
+
+        .hdi-bar-fill {
+            height: 100%;
+            border-radius: 5px;
+            background: linear-gradient(90deg, #e74c3c, #f39c12, #2980b9, #27ae60);
+            transition: width 0.6s ease;
+        }
+
+        .hdi-bar-labels {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 6px;
+        }
+
+        .hdi-bar-labels span {
+            color: rgba(255,255,255,0.35);
+            font-size: 0.7rem;
+        }
+
+        .input-summary {
+            margin-top: 18px;
+            display: flex;
+            justify-content: space-around;
+            gap: 12px;
+        }
+
+        .summary-item {
+            text-align: center;
+        }
+
+        .summary-item .val {
+            font-size: 1.1rem;
+            font-weight: 700;
+            color: #fff;
+        }
+
+        .summary-item .lbl {
+            font-size: 0.7rem;
+            color: rgba(255,255,255,0.4);
+            letter-spacing: 0.5px;
+        }
+
+        /* Error */
+        .error-box {
+            margin-top: 16px;
+            padding: 12px 18px;
+            background: rgba(231,76,60,0.15);
+            border: 1px solid rgba(231,76,60,0.4);
+            border-radius: 10px;
+            color: #ff9f9f;
+            font-size: 0.88rem;
+        }
+
+        /* Categories legend */
+        .legend {
+            margin-top: 24px;
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 10px;
+        }
+
+        .legend-item {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            color: rgba(255,255,255,0.55);
+            font-size: 0.78rem;
+        }
+
+        .legend-dot {
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            flex-shrink: 0;
+        }
+
+        @media (max-width: 560px) {
+            .form-grid { grid-template-columns: 1fr; }
+            .card { padding: 24px 20px; }
+            .hdi-value { font-size: 3rem; }
+            .input-summary { flex-direction: column; }
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <div class="header">
+        <div class="badge">ML-0027</div>
+        <h1>Human Development <span>Index</span> Predictor</h1>
+        <p>Enter socioeconomic indicators to predict the HDI score using a trained ML model.</p>
+    </div>
+
+    <div class="card">
+        <form method="POST" action="/predict">
+            <div class="form-grid">
+                <div class="form-group">
+                    <label for="life_expectancy">Life Expectancy</label>
+                    <input type="number" id="life_expectancy" name="life_expectancy"
+                           placeholder="e.g. 72.5" step="0.1" min="20" max="90"
+                           value="{{ life_exp if life_exp else '' }}" required>
+                    <span class="hint">Years (20 – 90)</span>
+                </div>
+
+                <div class="form-group">
+                    <label for="education_index">Education Index</label>
+                    <input type="number" id="education_index" name="education_index"
+                           placeholder="e.g. 0.750" step="0.001" min="0" max="1"
+                           value="{{ edu_index if edu_index else '' }}" required>
+                    <span class="hint">Score (0.0 – 1.0)</span>
+                </div>
+
+                <div class="form-group full-width">
+                    <label for="gni_per_capita">GNI per Capita (USD)</label>
+                    <input type="number" id="gni_per_capita" name="gni_per_capita"
+                           placeholder="e.g. 15000" step="1" min="100" max="150000"
+                           value="{{ gni if gni else '' }}" required>
+                    <span class="hint">Gross National Income per person ($100 – $150,000)</span>
+                </div>
+            </div>
+
+            <button type="submit" class="btn-predict">Predict HDI Score →</button>
+        </form>
+
+        {% if error %}
+        <div class="error-box">⚠️ {{ error }}</div>
+        {% endif %}
+
+        {% if prediction %}
+        <div class="result-card">
+            <div class="result-label">Predicted HDI Score</div>
+            <div class="hdi-value">{{ prediction }}</div>
+            <div class="category-badge" style="background-color: {{ category_color }};">
+                {{ category }}
+            </div>
+
+            <div class="hdi-bar-wrapper">
+                <div class="hdi-bar-fill" style="width: {{ (prediction * 100)|int }}%;"></div>
+            </div>
+            <div class="hdi-bar-labels">
+                <span>0.0 — Low</span>
+                <span>0.55 — Medium</span>
+                <span>0.70 — High</span>
+                <span>0.80 — Very High</span>
+            </div>
+
+            <div class="input-summary">
+                <div class="summary-item">
+                    <div class="val">{{ life_exp }}</div>
+                    <div class="lbl">Life Expectancy (yrs)</div>
+                </div>
+                <div class="summary-item">
+                    <div class="val">{{ edu_index }}</div>
+                    <div class="lbl">Education Index</div>
+                </div>
+                <div class="summary-item">
+                    <div class="val">${{ "{:,}".format(gni|int) }}</div>
+                    <div class="lbl">GNI per Capita</div>
+                </div>
+            </div>
+        </div>
+        {% endif %}
+
+        <div class="legend">
+            <div class="legend-item">
+                <div class="legend-dot" style="background:#27ae60;"></div>
+                Very High Development: ≥ 0.800
+            </div>
+            <div class="legend-item">
+                <div class="legend-dot" style="background:#2980b9;"></div>
+                High Development: 0.700 – 0.799
+            </div>
+            <div class="legend-item">
+                <div class="legend-dot" style="background:#f39c12;"></div>
+                Medium Development: 0.550 – 0.699
+            </div>
+            <div class="legend-item">
+                <div class="legend-dot" style="background:#e74c3c;"></div>
+                Low Development: &lt; 0.550
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>
