@@ -1,3 +1,1 @@
-The Human Development Index (HDI) is a statistical composite index of life expectancy, education, and per capita income indicators, which are used to rank countries into four tiers Very High, High, Medium, and Low of human development. A country achieves a higher HDI when its population enjoys a longer lifespan, better educational attainment, and a higher Gross National Income (GNI PPP) per capita.
-
-The HDI was developed to emphasize that people and their capabilities should be the primary measure of a country's development rather than economic growth alone. It provides a broader perspective on development by considering health, education, and living standards together. The index is widely used by governments, researchers, policymakers, and international organizations to evaluate progress, compare countries, and identify areas requiring improvement.
+Select features (independent variables) and the target (dependent variable) for the model.
