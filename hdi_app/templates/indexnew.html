@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Predict HDI</title>
+<style>
+    body {
+        font-family: 'Segoe UI', Arial, sans-serif;
+        background: linear-gradient(135deg, #1e3c72, #2a5298);
+        color: #1e3c72;
+        margin: 0;
+        min-height: 100vh;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+    .card {
+        background: #fff;
+        padding: 40px 50px;
+        border-radius: 16px;
+        box-shadow: 0 8px 24px rgba(0,0,0,0.3);
+        width: 380px;
+    }
+    h2 { text-align: center; margin-bottom: 25px; }
+    label { display: block; margin: 14px 0 6px; font-weight: 600; font-size: 0.9em; }
+    input {
+        width: 100%;
+        padding: 10px;
+        border: 1px solid #ccc;
+        border-radius: 6px;
+        box-sizing: border-box;
+        font-size: 1em;
+    }
+    button {
+        width: 100%;
+        margin-top: 25px;
+        padding: 12px;
+        background: #f0a500;
+        color: #1e3c72;
+        border: none;
+        font-weight: bold;
+        border-radius: 8px;
+        font-size: 1em;
+        cursor: pointer;
+        transition: 0.2s;
+    }
+    button:hover { background: #ffc233; }
+    a { display: block; text-align: center; margin-top: 16px; color: #2a5298; }
+</style>
+</head>
+<body>
+    <div class="card">
+        <h2>Enter Country Statistics</h2>
+        <form action="/predict" method="post">
+            <label for="country">Country (numeric code)</label>
+            <input type="number" step="any" id="country" name="country" required>
+
+            <label for="life_exp">Life Expectancy (years)</label>
+            <input type="number" step="any" id="life_exp" name="life_exp" required>
+
+            <label for="schooling">Mean Years of Schooling</label>
+            <input type="number" step="any" id="schooling" name="schooling" required>
+
+            <label for="gni">Gross National Income (GNI) per Capita</label>
+            <input type="number" step="any" id="gni" name="gni" required>
+
+            <button type="submit">Predict HDI</button>
+        </form>
+        <a href="/Home">&larr; Back to Home</a>
+    </div>
+</body>
+</html>
