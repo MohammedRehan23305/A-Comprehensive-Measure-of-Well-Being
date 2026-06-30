@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Predict HDI</title>
+<style>
+    * { box-sizing: border-box; }
+    body {
+        margin: 0;
+        min-height: 100vh;
+        font-family: 'Segoe UI', Arial, sans-serif;
+        color: #fff;
+        background-color: #07101f;
+        background-image:
+            radial-gradient(rgba(60,170,255,0.35) 1px, transparent 1px),
+            radial-gradient(rgba(60,170,255,0.18) 1px, transparent 1px);
+        background-size: 26px 26px, 14px 14px;
+        background-position: 0 0, 8px 8px;
+    }
+    .header1 {
+        text-align: center;
+        padding-top: 30px;
+    }
+    .header1 b {
+        color: #ff0000;
+        font-family: "Comic Sans MS", "Segoe UI", sans-serif;
+        font-size: 2.4em;
+    }
+    form.main {
+        max-width: 480px;
+        margin: 40px auto;
+        padding: 40px 36px;
+        background: rgba(8, 20, 40, 0.75);
+        border: 1px solid rgba(120, 170, 255, 0.35);
+        border-radius: 18px;
+        box-shadow: 0 0 30px rgba(40, 120, 220, 0.25);
+    }
+    #Country {
+        width: 100%;
+        padding: 12px;
+        margin-bottom: 22px;
+        background: transparent;
+        color: #cfe3ff;
+        border: 1px solid #5b8fd6;
+        border-radius: 20px;
+        text-align: center;
+        font-size: 0.95em;
+    }
+    #Country option { background: #0b1a2c; color: #fff; }
+    .form-input {
+        width: 100%;
+        padding: 12px;
+        margin-bottom: 22px;
+        background: transparent;
+        color: #cfe3ff;
+        border: 1px solid #5b8fd6;
+        border-radius: 20px;
+        text-align: center;
+        font-size: 0.95em;
+    }
+    .form-input::placeholder { color: #9fb8dd; }
+    .logbtn {
+        display: block;
+        margin: 10px auto 0;
+        padding: 14px 60px;
+        background: linear-gradient(90deg, #5b6cff, #c060e0);
+        color: #fff;
+        font-size: 1.15em;
+        font-weight: 600;
+        border: none;
+        border-radius: 30px;
+        cursor: pointer;
+        transition: 0.2s;
+    }
+    .logbtn:hover { opacity: 0.88; }
+    .bor {
+        margin-top: 25px;
+        text-align: center;
+    }
+</style>
+</head>
+<body>
+    <center><div class="header1"><font color="#FF0000"><b>Human Development Index</b></font></div></center>
+
+    <br><br>
+    <form class="main" action="/predict" method="post">
+        <br>
+        <center><select id="Country" name="Country">
+            <option value="">Select the name of the Country</option>
+            <option value="0">Afganistan</option>
+            <option value="8">Australia</option>
+            <option value="13">Bangladesh</option>
+            <option value="31">Canada</option>
+            <option value="76">India</option>
+            <option value="138">Poland</option>
+            <option value="179">Turkey</option>
+        </select></center>
+
+        <br>
+        <input class="form-input" type="text" name="Life expectancy" placeholder="Enter life expectancy rate(range 50-89)">
+        <br>
+        <input class="form-input" type="text" name="Mean years of schooling" placeholder="Enter Mean years of schooling(range 1.1-15)">
+        <br>
+        <input class="form-input" type="text" name="Gross national income (GNI) per capita" placeholder="Enter GNI(range 740-140000)">
+        <br>
+        <input class="form-input" type="text" name="Internet users" placeholder="Enter the number of internet users">
+        <br>
+        <center><input type="submit" class="logbtn" value="Predict"></center>
+        <div class="bor"><center><b><font color="white" size="5">{{ showcase }}</font></b></center></div>
+    </form>
+</body>
+</html>

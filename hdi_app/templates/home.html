@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Human Development Index</title>
+<style>
+    * { box-sizing: border-box; }
+    body {
+        margin: 0;
+        font-family: 'Segoe UI', Arial, sans-serif;
+        background: radial-gradient(circle at 20% 30%, #16324f 0%, #0b1a2c 55%, #060d18 100%);
+        color: #fff;
+        min-height: 100vh;
+    }
+    .navbar {
+        display: flex;
+        justify-content: flex-end;
+        gap: 30px;
+        padding: 18px 40px;
+        background: rgba(0,0,0,0.35);
+    }
+    .navbar a {
+        color: #fff;
+        text-decoration: none;
+        font-weight: 600;
+        font-size: 1.05em;
+        padding: 8px 18px;
+        border: 1px solid rgba(255,255,255,0.3);
+        border-radius: 6px;
+        transition: 0.2s;
+    }
+    .navbar a:hover {
+        background: #f0a500;
+        color: #0b1a2c;
+        border-color: #f0a500;
+    }
+    h1.title {
+        text-align: center;
+        font-family: "Comic Sans MS", "Segoe UI", sans-serif;
+        color: #fff;
+        font-size: 2.6em;
+        margin: 40px 0 30px;
+        text-shadow: 0 0 20px rgba(255,255,255,0.25);
+    }
+    .intro {
+        max-width: 850px;
+        margin: 0 auto 60px;
+        padding: 0 30px;
+        text-align: center;
+        line-height: 1.8;
+        font-size: 1.05em;
+        color: #dfe6f0;
+    }
+</style>
+</head>
+<body>
+    <div class="navbar">
+        <a href="/Prediction">Predict</a>
+        <a href="/Home">Home</a>
+    </div>
+
+    <center>
+        <h1 class="title">Human Development Index</h1>
+        <div class="intro">
+            <p>
+                The Human Development Index (HDI) is a statistic composite index of life expectancy, education,
+                and per capita income indicators, which are used to rank countries into four tiers (very high, high, medium &amp; low)
+                of human development. A country scores a higher HDI when the lifespan is higher, the education level is higher,
+                and the gross national income GNI (PPP) per capita is higher. The HDI was created to emphasize that people and their
+                capabilities should be the ultimate criteria for assessing the development of a country, not economic growth alone.
+                The HDI can also be used to question national policy choices, asking how two countries with the same level of
+                GNI per capita can end up with different human development outcomes. These contrasts can stimulate debate about
+                government policy priorities. In order to do this we will be building a machine learning model to predict the
+                Human Development Index of a country by taking a few important aspects as inputs. Our model will at last predict
+                the HDI score of a country and will also tell under which category will it be falling (very high, high, medium or low).
+            </p>
+        </div>
+    </center>
+</body>
+</html>
